@@ -3,18 +3,6 @@ $(document).ready(function() {
     $("#header-placeholder").load("header.html");
     $("#footer-placeholder").load("footer.html");
     
-    // Bio image rotation
-    const aboutImage = $("#bio img");
-    if(aboutImage.length) {
-        setInterval(() => {
-            aboutImage.css("transform", 
-                aboutImage.css("transform") === "rotate(10deg)" 
-                    ? "rotate(0deg)" 
-                    : "rotate(10deg)"
-            );
-        }, 200);
-    }
-    
     // Contact form handling
     $(".contact-form").on("submit", function(e) {
         e.preventDefault();
