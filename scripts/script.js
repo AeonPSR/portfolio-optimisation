@@ -1,38 +1,29 @@
-
-const heroImage = document.querySelector("#hero img");
-setInterval(() => {
-  heroImage.style.opacity = heroImage.style.opacity === "0.5" ? "1" : "0.5";
-}, 100);
-
-const aboutImage = document.querySelector("#bio img");
-setInterval(() => {
-  aboutImage.style.transform =
-    aboutImage.style.transform === "rotate(10deg)"
-      ? "rotate(0deg)"
-      : "rotate(10deg)";
-}, 200);
-
-
-document.querySelectorAll("nav ul li a").forEach((link) => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault();
-    alert("You clicked " + link.textContent);
-  });
+$(document).ready(function() {
+    // Load header and footer
+    $("#header-placeholder").load("header.html");
+    $("#footer-placeholder").load("footer.html");
+    
+    // Bio image rotation
+    const aboutImage = $("#bio img");
+    if(aboutImage.length) {
+        setInterval(() => {
+            aboutImage.css("transform", 
+                aboutImage.css("transform") === "rotate(10deg)" 
+                    ? "rotate(0deg)" 
+                    : "rotate(10deg)"
+            );
+        }, 200);
+    }
+    
+    // Contact form handling
+    $(".contact-form").on("submit", function(e) {
+        e.preventDefault();
+        alert("Form submitted!");
+    });
 });
-
-
-const unusedFunction = () => {
-  console.log("This function is not called anywhere!");
-};
-
 
 function toggleHighlight(element) {
-  element.style.backgroundColor =
-    element.style.backgroundColor === "yellow" ? "white" : "yellow";
+    $(element).css("backgroundColor", 
+        $(element).css("backgroundColor") === "yellow" ? "white" : "yellow"
+    );
 }
-
-const contactForm = document.querySelector(".contact-form");
-contactForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  alert("Form submitted!");
-});
